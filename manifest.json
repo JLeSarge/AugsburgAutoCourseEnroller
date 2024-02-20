@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "Augsburg Auto Course Enroller",
+    "description": "Automatically enrolls you into your Augsburg courses.",
+    "version": "1.0",
+    "action": {
+      "default_popup": "AugsburgAutoCourseEnroller.html",
+      "default_icon": "images/Augsburg_University_seal.svg.png"
+    }
+  }
