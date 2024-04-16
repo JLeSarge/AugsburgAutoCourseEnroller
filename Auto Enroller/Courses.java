@@ -25,5 +25,10 @@ public class Courses {
     public int getCapacity() {
         return capacity;
     }
+    public void enrollStudent(EnrollmentManager.Student student) {
+    }
+    public String getCourseName() {
+        return null;
+    }
 
 }
