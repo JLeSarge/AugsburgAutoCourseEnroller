@@ -81,7 +81,7 @@ public class EnrollmentManager {
                 available.add(course);
             }
         }
-        // return available courses
+        // returns available courses
         // retrieves courses that are available for enrollment
         return available;
     }
