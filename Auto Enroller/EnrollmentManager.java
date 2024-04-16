@@ -67,5 +67,5 @@ public class EnrollmentManager {
         // retrieves courses that are available for enrollment
         return available;
     }
-    
+    //
 }
