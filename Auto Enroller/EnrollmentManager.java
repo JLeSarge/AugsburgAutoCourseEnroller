@@ -25,6 +25,21 @@ public class EnrollmentManager {
         public String getCourseName() {
             return courseName;
         }
+
+        public EnrollmentRule getEnrollmentRule() {
+            return null;
+        }
+
+        public List<EnrollmentManager.Course> getEnrolledStudents() {
+            return null;
+        }
+
+        public int getCapacity() {
+            return 0;
+        }
+
+        public void enrollStudent(EnrollmentManager.Student student) {
+        }
     
     }
 
@@ -32,7 +47,10 @@ public class EnrollmentManager {
         this.availableCourses = availableCourses;
     }
 
-    public void enrollStudent(Student student, Course course) {
+    public EnrollmentManager() {
+    }
+
+    public void enrollStudent(Student student, Courses course) {
         // check if the course is available for enrollment
         if (availableCourses.contains(course)) {
             // check eligibility based on enrollement rule
@@ -63,9 +81,9 @@ public class EnrollmentManager {
                 available.add(course);
             }
         }
-        // return available courses
+        // returns available courses
         // retrieves courses that are available for enrollment
         return available;
     }
-    //
+
 }
