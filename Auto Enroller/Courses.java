@@ -28,7 +28,7 @@ public class Courses {
     public void enrollStudent(EnrollmentManager.Student student) {
     }
     public String getCourseName() {
-        return null;
+        return courseName;
     }
 
 }
