@@ -1,53 +1,11 @@
 import java.util.List;
 import java.util.ArrayList;
+
 public class EnrollmentManager {
-    private List<Course> availableCourses;
-    public class Student {
-        private String name;
-    
-        public Student(String name) {
-            this.name = name;
-        }
-    
-        public String getName() {
-            return name;
-        }
-    
-    }
-    
-    public class Course {
-        private String courseName;
-    
-        public Course(String courseName) {
-            this.courseName = courseName;
-        }
-    
-        public String getCourseName() {
-            return courseName;
-        }
+    private List<Courses> availableCourses;
 
-        public EnrollmentRule getEnrollmentRule() {
-            return null;
-        }
-
-        public List<EnrollmentManager.Course> getEnrolledStudents() {
-            return null;
-        }
-
-        public int getCapacity() {
-            return 0;
-        }
-
-        public void enrollStudent(EnrollmentManager.Student student) {
-        }
-    
-    }
-
-    public EnrollmentManager(List<Course> availableCourses) {
+    public EnrollmentManager(List<Courses> availableCourses) {
         this.availableCourses = availableCourses;
-    }
-
-    public EnrollmentManager() {
     }
 
     public void enrollStudent(Student student, Courses course) {
@@ -74,9 +32,9 @@ public class EnrollmentManager {
     }
     
 
-    public List<Course> getAvailableCourses() {
-        List<Course> available = new ArrayList<>();
-        for (Course course : availableCourses) {
+    public List<Courses> getAvailableCourses() {
+        List<Courses> available = new ArrayList<>();
+        for (Courses course : availableCourses) {
             if (course.getEnrollmentRule() != null && course.getEnrollmentRule().isWithinEnrollmentPeriod()) {
                 available.add(course);
             }

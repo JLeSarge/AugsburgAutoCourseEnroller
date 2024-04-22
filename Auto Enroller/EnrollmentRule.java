@@ -40,13 +40,4 @@ public class EnrollmentRule {
         return currentTime.isAfter(enrollmentStartTime) && currentTime.isBefore(enrollmentEndTime);
     }
 
-    public boolean isEligible(EnrollmentManager.Student student, EnrollmentManager.Course course) {
-        return false;
-    }
-
-    public boolean isEligible(EnrollmentManager.Student student, Courses course) {
-        return false;
-    }
-
-
 }
