@@ -18,14 +18,18 @@ public class EnrollmentManager {
                 if (course.getEnrolledStudents().size() < course.getCapacity()) {
                     // enroll student
                     course.enrollStudent(student);
+                    student.setEnrolled(true);
                     System.out.println("Student" + student.getName() + " enrolled in course " + course.getCourseName());
                 } else {
+                    student.setEnrolled(false);
                     System.out.println("Course " + course.getCourseName() + " is already full");
                 } 
                  } else {
+                    student.setEnrolled(false);
                     System.out.println("Student" + student.getName() + " is not eligible to enroll in course " + course.getCourseName());
                 }
             }else {
+                student.setEnrolled(false);
                 System.out.println("Course" + course.getCourseName() + " is not availible for enrollment." );
             }
               
