@@ -23,7 +23,7 @@ function login(username, password) {
 //login('adana', 'Aada2001@');
 
 // Function to select the course and submit the form
-function courseSelect(courseName) {
+async function courseSelect(courseName) {
     const courseDescriptionInput = document.getElementById('txtCourseDescription');
     const showOpenSeatsCheckbox = document.getElementById('chkShowOpenSeats');
     const searchButton = document.getElementById('btnFill');
@@ -54,7 +54,7 @@ function courseSelect(courseName) {
         body: {
             studentId: 000000,
             name: userid,
-            email: userid + "@augsburg.edu",
+            email: username + "@augsburg.edu",
             enrolled: true
         }
     }
