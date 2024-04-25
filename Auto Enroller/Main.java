@@ -1,3 +1,4 @@
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -208,7 +209,7 @@ public class Main {
         private Student  student;
         private Connection myConn = null;
         private Statement myStat;
-        private LocalDate event;
+        private LocalDateTime event;
     
         public void setUSER(Student stu){
             student = stu;
@@ -230,7 +231,7 @@ public class Main {
             }
         }
         public void createEventTime(){
-            event = LocalDate.now();
+            event = LocalDateTime.now();
         }
         //the actual sql statment that inserts the information (name,studentid,date)
         public String createSQL(){
