@@ -2,7 +2,7 @@
     padding: 20px;
 }
 
-input[type="text"] {
+label[type="text"] {
     width: 200px;
     padding: 5px;
     margin-bottom: 10px;

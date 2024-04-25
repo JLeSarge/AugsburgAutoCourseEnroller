@@ -1,10 +1,23 @@
 {
-    "manifest_version": 3,
-    "name": "Augsburg Auto Course Enroller",
-    "description": "Automatically enrolls you into your Augsburg courses.",
-    "version": "1.0",
-    "action": {
-      "default_popup": "AugsburgAutoCourseEnroller.html",
-      "default_icon": "images/Augsburg_University_seal.svg.png"
+  "manifest_version": 3,
+  "name": "AugsburgAutoCourseEnroller",
+  "description": "Automatically Enroll into Courses.",
+  "version": "1.0",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "https://augnet.augsburg.edu/*",
+    "https://registration.augsburg.edu/recreg/Pages/frmCourseSearch.aspx"
+  ],
+  "content_scripts": [
+    {
+      "matches1": ["https://registration.augsburg.edu/recreg/Pages/frmCourseSearch.aspx"],
+      "matches": ["https://augnet.augsburg.edu/*"], 
+      "js": ["content.js"]
     }
+  ],
+  "action": {
+    "default_popup": "AugsburgAutoCourseEnroller.html",
+    "default_icon": "images/Augsburg_University_seal.svg.png"
   }
+}
