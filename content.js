@@ -32,7 +32,7 @@ async function courseSelect(courseName) {
             "Content-Type": "application/json"
         },
         body: {
-            studentId: 000000,
+            studentId: "000000",
             name: userid,
             email: userid + "@augsburg.edu",
             enrolled: true
