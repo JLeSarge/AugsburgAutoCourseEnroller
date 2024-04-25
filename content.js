@@ -26,7 +26,7 @@ function login(username, password) {
 async function courseSelect(courseName) {
     userid = 'adana'
 
-    await fetch("http://localhost:8080/api/enroll", {
+    await fetch("/api/enroll", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
