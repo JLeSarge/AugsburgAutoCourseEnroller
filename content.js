@@ -20,7 +20,7 @@ function login(username, password) {
 }
 
 // Call the login function with the user's credentials
-//login('adana', 'Aada2001@');
+//login('***', '*****');
 
 // Function to select the course and submit the form
 async function courseSelect(courseName) {
@@ -56,15 +56,14 @@ async function courseSelect(courseName) {
         // Manually trigger the 'click' event on the search button
         searchButton.click();
 
-        // Remove the event listener after the function is executed
-        searchButton.removeEventListener('click', courseSelect);
     } else {
         console.error('Course description input field, "Show Open Seats" checkbox, or search button not found.');
     }
 }
 
-// Call the courseSelect function with the course name provided by the user
 courseSelect('Introduction to Cultural Anthropology');
+
+
 
 // Listen for messages from the userinputhandler.js script
 /* chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
