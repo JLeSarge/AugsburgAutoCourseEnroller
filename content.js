@@ -44,7 +44,7 @@ function courseSelect(courseName) {
         console.error('Course description input field, "Show Open Seats" checkbox, or search button not found.');
     }
 
-    username = 'adana'
+    userid = 'adana'
 
     await fetch("/api/enroll", {
         method: "POST",
@@ -53,8 +53,8 @@ function courseSelect(courseName) {
         },
         body: {
             studentId: 000000,
-            name: username,
-            email: username + "@augsburg.edu",
+            name: userid,
+            email: userid + "@augsburg.edu",
             enrolled: true
         }
     }
