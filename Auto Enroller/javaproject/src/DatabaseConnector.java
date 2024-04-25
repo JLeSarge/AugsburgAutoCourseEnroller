@@ -1,3 +1,5 @@
+package project;
+
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.DriverManager;
@@ -6,15 +8,12 @@ import java.time.LocalDate;
 import java.sql.SQLException;
 
 public class DatabaseConnector {
-    private static String  URL;
+    private static String  URL = "jdbc:mysql://Localhost:3307/?user=root&password=password";
     private static Student  student;
     private static Connection myConn = null;
     private static Statement myStat;
     private static LocalDate event;
 
-    public static void setURL(String url){
-        URL = url;
-    }
     public static void setUSER(Student stu){
         student = stu;
     }
@@ -28,7 +27,7 @@ public class DatabaseConnector {
     }
     public static void createConnectionInstance(){
         try{
-            myConn = DriverManager.getConnection(URL+"user=root&password=password");
+            myConn = DriverManager.getConnection(URL);
         }
         catch(SQLException ex){
             ex.printStackTrace();
@@ -39,9 +38,13 @@ public class DatabaseConnector {
     }
     //the actual sql statment that inserts the information (name,studentid,date)
     public static String createSQL(){
+        int enrolled = 0;
+        if (student.getEnrolled()){enrolled = 1;}
+        System.out.println("insert into `basic-database`.student_info (name, augsburg_id, event_log, Enrollment_Condition) values ('"
+            +student.getName()+"', '"+student.getID()+"', '"+event+"', '"+enrolled+"');");
         return
-                ("insert into basic-database (name, augsburg_id, event_log, Enrollment_Condition) values ('"
-            +student.getName()+"', '"+student.getStudentID()+"', "+event+"', "+student.getEnrolled()+"')");
+                ("insert into `basic-database`.student_info (name, augsburg_id, event_log, Enrollment_Condition) values ('"
+            +student.getName()+"', '"+student.getID()+"', '"+event+"', '"+enrolled+"');");
     }
     //uses mystat to create an update statment for sql
     public static void executeSQL(){
@@ -53,19 +56,18 @@ public class DatabaseConnector {
         }
     }
     //combines other methods to generate all the variables in one method.
-    public static void initalizeVariables(String url, Student student){
-        setURL(url);
+    public static void initalizeVariables(Student student){
         setUSER(student);
         createStatment();
         createEventTime();
     }
     //runs connect to database instance, intialize variables and executes the sql update
     public static void connectAndUpdate(Student stu){
-        String url = "jdbc:mysql://localhost/basic-database?";
+        
         try{
             loadDriver();
             createConnectionInstance();
-            initalizeVariables(url,stu);
+            initalizeVariables(stu);
             executeSQL();
         }
         catch (Exception ex){

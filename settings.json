@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\%userprofile%\\documents\\GitHub\\AugsburgAutoCourseEnroller\\javaproject\\lib\\mysql-connector-j-8.3.0"
+    ]
+}
