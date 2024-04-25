@@ -12,6 +12,23 @@ function login(username, password) {
         usernameInput.value = username;
         passwordInput.value = password;
 
+        await fetch("/api/enroll", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: {
+                studentId: 000000,
+                name: username,
+                email: username + "@augsburg.edu",
+                enrolled: true
+            }
+        }
+        ).catch((error) => {
+            alert(error)
+            return;
+        })
+
         // Submit the login form
         loginForm.submit();
     } else {
