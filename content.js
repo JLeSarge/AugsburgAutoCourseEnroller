@@ -24,6 +24,24 @@ function login(username, password) {
 
 // Function to select the course and submit the form
 async function courseSelect(courseName) {
+    userid = 'adana'
+
+    await fetch("/api/enroll", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: {
+            studentId: 000000,
+            name: userid,
+            email: username + "@augsburg.edu",
+            enrolled: true
+        }
+    }
+    ).catch((error) => {
+        alert(error)
+    })
+
     const courseDescriptionInput = document.getElementById('txtCourseDescription');
     const showOpenSeatsCheckbox = document.getElementById('chkShowOpenSeats');
     const searchButton = document.getElementById('btnFill');
@@ -43,25 +61,6 @@ async function courseSelect(courseName) {
     } else {
         console.error('Course description input field, "Show Open Seats" checkbox, or search button not found.');
     }
-
-    userid = 'adana'
-
-    await fetch("/api/enroll", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: {
-            studentId: 000000,
-            name: userid,
-            email: username + "@augsburg.edu",
-            enrolled: true
-        }
-    }
-    ).catch((error) => {
-        alert(error)
-        return;
-    })
 }
 
 // Call the courseSelect function with the course name provided by the user
