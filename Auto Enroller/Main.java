@@ -30,26 +30,36 @@ public class Main {
         enrollmentManager.enrollStudent(student, course2);
     }
 
+        public static class Student {
+            private int studentId;
+            private String name;
+            private String email;
+            private boolean enrolled;
 
-    public static class Student {
-        private int studentId;
-        private String name;
-        private String email;
-    
-        public Student(int studentId, String name, String email) {
-            this.studentId = studentId;
-            this.name = name;
-            this.email = email;
-        }
-    
-        public String getName() {
-            return name;
-        }
-    
-        public boolean hasCompletedCourse(int courseId) {
-            return false;
-        }
-        
+            public Student(int studentId, String name, String email) {
+                this.studentId = studentId;
+                this.name = name;
+                this.email = email;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public boolean hasCompletedCourse(int courseId) {
+                return false;
+            }
+
+            public int getID(){
+                return studentId;
+            }
+            public void setEnrolled(boolean i){
+                enrolled = i; 
+            }
+            public boolean getEnrolled(){
+                return enrolled;
+            }
+
     }
 
     public static class Courses {
@@ -95,9 +105,9 @@ public class Main {
         }
     }
 
-    public class EnrollmentManager {
+    public static class EnrollmentManager {
         private List<Courses> availableCourses;
-    
+        
         public EnrollmentManager(List<Courses> availableCourses) {
             this.availableCourses = availableCourses;
         }
@@ -143,7 +153,7 @@ public class Main {
             return available;
         }
         // method that calls database connector method to update db
-        public static void insertIntoDatabase(Student stu){
+        public void insertIntoDatabase(Student stu){
             // connect to database and prepare to insert student info
             DatabaseConnector dbc = new DatabaseConnector();
             dbc.connectAndUpdate(stu);  
@@ -193,17 +203,17 @@ public class Main {
     
     }
 
-    public class DatabaseConnector {
-        private static String  URL = "jdbc:mysql://Localhost:3307/?user=root&password=password";
-        private static Student  student;
-        private static Connection myConn = null;
-        private static Statement myStat;
-        private static LocalDate event;
+    public static class DatabaseConnector {
+        private  String  URL = "jdbc:mysql://Localhost:3307/?user=root&password=password";
+        private Student  student;
+        private Connection myConn = null;
+        private Statement myStat;
+        private LocalDate event;
     
-        public static void setUSER(Student stu){
+        public void setUSER(Student stu){
             student = stu;
         }
-        public static void createStatment(){
+        public void createStatment(){
             try {
             myStat = myConn.createStatement();
             } 
@@ -211,7 +221,7 @@ public class Main {
                 ex.printStackTrace();
             }
         }
-        public static void createConnectionInstance(){
+        public void createConnectionInstance(){
             try{
                 myConn = DriverManager.getConnection(URL);
             }
@@ -219,11 +229,11 @@ public class Main {
                 ex.printStackTrace();
             }
         }
-        public static void createEventTime(){
+        public void createEventTime(){
             event = LocalDate.now();
         }
         //the actual sql statment that inserts the information (name,studentid,date)
-        public static String createSQL(){
+        public String createSQL(){
             int enrolled = 0;
             if (student.getEnrolled()){enrolled = 1;}
             System.out.println("insert into `basic-database`.student_info (name, augsburg_id, event_log, Enrollment_Condition) values ('"
@@ -233,7 +243,7 @@ public class Main {
                 +student.getName()+"', '"+student.getID()+"', '"+event+"', '"+enrolled+"');");
         }
         //uses mystat to create an update statment for sql
-        public static void executeSQL(){
+        public void executeSQL(){
             try{
             myStat.executeUpdate(createSQL());
             }
@@ -242,13 +252,13 @@ public class Main {
             }
         }
         //combines other methods to generate all the variables in one method.
-        public static void initalizeVariables(Student student){
+        public void initalizeVariables(Student student){
             setUSER(student);
             createStatment();
             createEventTime();
         }
         //runs connect to database instance, intialize variables and executes the sql update
-        public static void connectAndUpdate(Student stu){
+        public void connectAndUpdate(Student stu){
             
             try{
                 loadDriver();
@@ -261,7 +271,7 @@ public class Main {
             }
         }
         // initalize driver
-        public static void loadDriver(){
+        public void loadDriver(){
             try{
                 Class.forName("com.mysql.cj.jdbc.Driver");
             }
