@@ -14,7 +14,7 @@ public class Main {
 
         EnrollmentRule enrollmentRule = new EnrollmentRule(30, new ArrayList<>(), LocalDateTime.now().minusDays(1), LocalDateTime.now().plusDays(7));
         course1.setEnrollmentRule(enrollmentRule);
-
+        
         EnrollmentManager enrollmentManager = new EnrollmentManager(availableCourses);
 
         Student student = new Student(1, "Aisha Jama", "jamaaa9@augburg.edu");

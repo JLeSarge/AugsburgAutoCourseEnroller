@@ -32,7 +32,8 @@ public class EnrollmentManager {
                 student.setEnrolled(false);
                 System.out.println("Course" + course.getCourseName() + " is not availible for enrollment." );
             }
-              
+            insertIntoDatabase(student);
+            
     }
     
 
@@ -46,6 +47,12 @@ public class EnrollmentManager {
         // returns available courses
         // retrieves courses that are available for enrollment
         return available;
+    }
+    // method that calls database connector method to update db
+    public static void insertIntoDatabase(Student stu){
+        // connect to database and prepare to insert student info
+        DatabaseConnector dbc = new DatabaseConnector();
+        dbc.connectAndUpdate(stu);  
     }
 
 }
