@@ -11,8 +11,8 @@
   ],
   "content_scripts": [
     {
-      "matches1": ["https://registration.augsburg.edu/recreg/Pages/frmCourseSearch.aspx"],
-      "matches": ["https://augnet.augsburg.edu/*"], 
+      "matches": ["https://registration.augsburg.edu/recreg/Pages/frmCourseSearch.aspx"],
+      "matches1": ["https://augnet.augsburg.edu/*"], 
       "js": ["content.js"]
     }
   ],

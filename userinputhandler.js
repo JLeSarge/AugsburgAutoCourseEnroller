@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Open a new tab with the Augsburg web page
         chrome.tabs.create({
-            url: augsburgURL
+            url: searchRegisterClassesURL
         });
     });
 });
