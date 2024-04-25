@@ -26,7 +26,7 @@ function login(username, password) {
 async function courseSelect(courseName) {
     userid = 'adana'
 
-    await fetch("/api/enroll", {
+    await fetch("api/enroll", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -34,7 +34,7 @@ async function courseSelect(courseName) {
         body: {
             studentId: 000000,
             name: userid,
-            email: username + "@augsburg.edu",
+            email: userid + "@augsburg.edu",
             enrolled: true
         }
     }
